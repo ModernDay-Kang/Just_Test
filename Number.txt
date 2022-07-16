@@ -1,0 +1,58 @@
+def 약수(n):
+    n1 = range(1,n+1)
+    n2 = []
+    for i in n1 :
+        if n % i == 0:
+            n2.append(i)
+    return n2
+
+def 공약수(n,m):
+    a = list(set(약수(n))&set(약수(m)))
+    a.sort()
+    return a
+
+def 최대공약수(n,m):
+    a = list(set(약수(n))&set(약수(m)))
+    a.sort()
+    b = a[-1]
+    return b
+
+def 배수(n):
+    m = []
+    for k in range(1,10) :
+        n1 = n*k
+        m.append(n1)
+    return m
+
+def 공배수(n,m):
+    m1 = list(set(배수(n))&set(배수(m)))
+    m2 = []
+    if m1 == []:
+        for k in range(1,10):
+            m2 = n*m*k
+            m1.append(m2)
+    m1.sort()
+    return m1
+
+def 최소공배수(n,m):
+    m2 = 공배수(n,m)[0]
+    return m2
+
+
+n = int(input("Enter First Number => "))
+m = int(input("Enter Second Number => "))
+
+print("%s의 약수 = > %s" %(n,약수(n)))
+print("%s의 약수 = > %s" %(m,약수(m)))
+print("%s와 %s의 공약수 => %s" %(n,m,공약수(n,m)))
+print("%s와 %s의 최대공약수 => %s" %(n,m,최대공약수(n,m)))
+if 최대공약수(n,m) == 1 :
+    print("%s과 %s는 서로소"%(n,m))
+
+
+print("%s의 배수 => %s..."%(n,배수(n)))
+print("%s의 배수 => %s..."%(m,배수(m)))
+print("%s과 %s의 공배수 = > %s..."%(n,m,공배수(n,m)))
+print("%s과 %s의 최소공배수 = > %s"%(n,m,최소공배수(n,m)))
+
+input("")
